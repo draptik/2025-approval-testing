@@ -1,0 +1,70 @@
+/* Font for main headline(s) */
+@font-face {
+  font-family: DroidSerif; src: url('/fonts/droid-serif/DroidSerif-Regular.ttf');
+}
+
+/* Font for other headlines?? */
+@font-face {
+  font-family: InterSemibold; src: url('/fonts/inter/Inter-SemiBold.ttf');
+}
+
+/* Font for quotes */
+@font-face {
+  font-family: DroidSerifItalic; src: url('/fonts/droid-serif/DroidSerif-Italic.ttf');
+}
+
+/* Font for normal text */
+@font-face {
+  font-family: Inter; src: url('/fonts/inter/Inter-Regular.ttf');
+}
+
+/* Font for code samples */
+@font-face {
+  font-family: JetBrains; src: url('/fonts/jetbrains-mono/JetBrains Mono Regular Nerd Font Complete Mono.ttf');
+}
+
+.slidev-layout {
+  @apply px-14 py-10 text-[1.1rem];
+
+  h1 {
+    font-family: DroidSerif;
+  }
+
+  h2, h3, h4 {
+    font-family: Inter;
+  }
+
+  h1, h2, h3 {
+    color: #C5003E;
+    text-transform: none;
+    opacity: 1 !important;
+  }
+
+  blockquote p,
+  blockquote ol li {
+    font-family: DroidSerifItalic;
+  }
+
+  p {
+    font-family: Inter;
+  }
+
+  li {
+    strong {
+      font-size: 1.1em;
+    }
+  }
+
+  /* Add some extra space between left and right side when working with code blocks. */
+  &.two-cols-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr auto !important; /* No idea why I need important here... */
+    column-gap: 20px; /* Adjust the gap size as needed */
+
+    .col-bottom {
+      align-self: end;
+      grid-area: 3 / 1 / 4 / 3; /* Adjust this to correctly place the bottom area */
+    }
+  }
+}

@@ -1,0 +1,9 @@
+config:
+  MD001: false # heading increment should only increase by one level
+  MD013: false # line length
+  MD022: false # heading surround 1 line
+  MD003: false # consistent heading styles
+  MD033: false # no inline html
+  MD024: false # no duplicate headings
+  MD045: false # no alt text
+  MD026: false # no trailing punctuation in headings
