@@ -1,6 +1,4 @@
-# Property-based Testing
-
-### Eine Einführung in FsCheck und CsCheck
+# Revitalizing Legacy Code: Approval Testing Unleashed
 
 Patrick Drechsler
 
@@ -10,6 +8,7 @@ Patrick Drechsler
     background-image: none;
     color: black;
     padding-left: 0;
+    line-height: 120%;
 }
 p {
     color: black;
