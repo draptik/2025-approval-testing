@@ -1,0 +1,45 @@
+name: Deploy pages
+on:
+  push:
+    branches:
+      - 2025-04-dcn
+
+jobs:
+  deploy:
+
+    env:
+      PRESENTATION_FOLDER: 'presentation'
+      TARGET_REPO_NAME: '2025-04-dcn-approval-testing'
+      TARGET_GITHUB_OWNER: 'draptik'
+      NODE_VERSION: '22'
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ env.PRESENTATION_FOLDER }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies using pnpm
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build -- --base '/${{ env.TARGET_REPO_NAME }}/'
+
+      - name: Deploy to target repository
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          build_dir: ${{ env.PRESENTATION_FOLDER }}/dist
+          repo: '${{ env.TARGET_GITHUB_OWNER }}/${{ env.TARGET_REPO_NAME }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.SLIDEV_TOKEN }}
+
