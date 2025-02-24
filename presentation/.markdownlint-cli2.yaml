@@ -5,5 +5,6 @@ config:
   MD003: false # consistent heading styles
   MD033: false # no inline html
   MD024: false # no duplicate headings
+  MD041: false # first line in file should be top level heading
   MD045: false # no alt text
   MD026: false # no trailing punctuation in headings
