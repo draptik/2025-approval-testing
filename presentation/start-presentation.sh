@@ -1,2 +1,2 @@
 #!/bin/bash
-pnpm run dev
+npm run dev
