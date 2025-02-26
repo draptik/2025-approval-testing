@@ -2,7 +2,7 @@ name: Deploy pages
 on:
   push:
     branches:
-      - 2025-04-dcn
+      - 2025-04-dcn-disabled
 
 jobs:
   deploy:

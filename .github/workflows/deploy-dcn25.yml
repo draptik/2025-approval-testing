@@ -2,7 +2,7 @@ name: Deploy pages
 on:
   push:
     branches:
-      - 2025-04-dcn-disabled
+      - 2025-04-dcn
 
 jobs:
   deploy:
@@ -33,12 +33,12 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm run build -- --base '/${{ env.TARGET_REPO_NAME }}/'
+        run: pnpm build -- --base '/${{ env.TARGET_REPO_NAME }}/'
 
       - name: Deploy to target repository
         uses: crazy-max/ghaction-github-pages@v4
         with:
-          build_dir: './${{ env.PRESENTATION_FOLDER }}/dist'
+          build_dir: ${{ env.PRESENTATION_FOLDER }}/dist
           repo: '${{ env.TARGET_GITHUB_OWNER }}/${{ env.TARGET_REPO_NAME }}'
         env:
           GITHUB_TOKEN: ${{ secrets.SLIDEV_TOKEN }}
