@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+    <ProjectReference Include="..\..\src\ApprovalTesting.Demo1\ApprovalTesting.Demo1.csproj" />
+    </ItemGroup>
+
+</Project>

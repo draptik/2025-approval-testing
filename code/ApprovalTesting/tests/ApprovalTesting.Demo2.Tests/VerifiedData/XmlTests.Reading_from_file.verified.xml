@@ -1,0 +1,8 @@
+﻿<Person>
+  <FirstName>Homer</FirstName>
+  <LastName>Simpson</LastName>
+  <Age>39</Age>
+  <Id>Guid_Empty</Id>
+  <DateOfBirth>DateTimeOffset_1</DateOfBirth>
+  <Address />
+</Person>

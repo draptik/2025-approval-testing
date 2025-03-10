@@ -1,0 +1,9 @@
+﻿{
+  FirstName: Homer,
+  LastName: Simpson,
+  Age: 39,
+  Id: Guid_1,
+  AquiredAt: DateTime_1,
+  CreatedAt: DateTime_2,
+  UpdatedAt: DateTime_2
+}
