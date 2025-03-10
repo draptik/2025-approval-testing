@@ -19,6 +19,11 @@ Slides 👇
   src="/images/slides.png"
 />
 
+<img
+  class="absolute bottom-10 right-40 h-30"
+  src="/images/anti-nazi.png"
+/>
+
 <p style="font-size:0.75em">
 Image sources: <a href="https://pixabay.com/" target="_blank">pixabay.com</a> and <a href="https://perchance.org/ai-photo-generator" target="_blank">perchance.org/ai-photo-generator</a>
 </p>
