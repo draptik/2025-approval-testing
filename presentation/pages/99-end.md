@@ -12,7 +12,7 @@ Slides 👇
 - QR Code or
 - <https://draptik.github.io/2025-04-dcn-approval-testing/>
 - sample code:
-  <https://github.com/draptik/2025-mutation-testing/code>
+  <https://github.com/draptik/2025-approval-testing/code>
 
 <img
   class="absolute top-10 right-30 h-70"
