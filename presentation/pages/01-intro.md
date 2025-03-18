@@ -18,13 +18,3 @@
   class="absolute bottom-20 right-50 h-30 custom-slow-pulse"
   src="/images/anti-nazi.png"
 />
-
-<style>
-@keyframes customSlowPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-.custom-slow-pulse {
-  animation: customSlowPulse 9s infinite;
-}
-</style>
