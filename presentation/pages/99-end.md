@@ -20,7 +20,7 @@ Slides 👇
 />
 
 <img
-  class="absolute bottom-10 right-40 h-30"
+  class="absolute bottom-10 right-40 h-30 custom-slow-pulse"
   src="/images/anti-nazi.png"
 />
 
