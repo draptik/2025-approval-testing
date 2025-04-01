@@ -21,7 +21,6 @@ src: ./pages/00-title.md
 src: ./pages/01-intro.md
 ---
 
-
 ---
 layout: image-left
 image: /images/machine4.jpg
@@ -136,7 +135,8 @@ function calcDotNet($endpointName, Request $request)
 
 <v-clicks>
 
-- ⚠️ Pay attention to data structures (dynamic vs. static typing) 
+- ⚠️ Pay attention to data structures (dynamic vs. static typing)
+
 ```php {1|1-2|1-3|all}
 $foo[1] = 1;                  // 👈 is foo an int ?
 $foo[2] = 2.3;                // 👈 or a float ?
@@ -172,7 +172,7 @@ layout: image-left
 image: /images/frozen.jpg
 ---
 
-**Walking on water** and **developing software** from a specification are easy if both are **frozen**. -- Edward V. Berard 
+**Walking on water** and **developing software** from a specification are easy if both are **frozen**. -- Edward V. Berard
 
 <style>
   p {
@@ -264,11 +264,11 @@ discard-->closeDiff
 
 ## Hello World Example
 
-```csharp
+```cs
 public record Person(string FirstName, string LastName, int Age);
 ```
 
-```csharp
+```cs
 // ⚠️ Fact must return Task!
 [Fact]
 public Task VerifyPersonTest()
@@ -296,7 +296,7 @@ layout: two-cols-header
 
 ::left::
 
-```csharp
+```cs
 public record PersonRequest(string FirstName, string LastName, int Age);
 public record PersonResponse(string FirstName, string LastName, int Age)
 {
@@ -305,7 +305,7 @@ public record PersonResponse(string FirstName, string LastName, int Age)
 }
 ```
 
-```csharp
+```cs
 [Fact]
 public Task PersonResponse_FromRequest()
 {
@@ -320,7 +320,7 @@ public Task PersonResponse_FromRequest()
 }
 ```
 
-::right:: 
+::right::
 
 Verified text file:
 
@@ -379,7 +379,7 @@ layout: two-cols-header
 
 ::left::
 
-```csharp {all|5-8,19-23}
+```cs {all|5-8,19-23}
 public record Person(
     string FirstName,
     string LastName,
@@ -451,7 +451,7 @@ public Task PersonTest()
 
 ## Verify - Custom Scrubbers
 
-https://github.com/VerifyTests/Verify/blob/main/docs/scrubbers.md
+<https://github.com/VerifyTests/Verify/blob/main/docs/scrubbers.md>
 
 - Example when generating SVGs using [Plotly.NET](https://plotly.net/): Scrub all lines containing `#clip` followed by a word character
 - `ScrubLinesWithReplace` and friends
@@ -462,8 +462,9 @@ let settings = VerifySettings ()
 settings.ScrubLinesWithReplace (fun line ->
     System.Text.RegularExpressions.Regex.Replace(line, "#clip\w+", "#clipSCRUBBED"))
 ```
-```csharp
-// C# (unverified)
+
+```cs
+// C#
 var settings = new VerifySettings();
 settings.ScrubLinesWithReplace(line =>
     System.Text.RegularExpressions.Regex.Replace(line, "#clip\\w+", "#clipSCRUBBED"));
@@ -497,24 +498,26 @@ Very cool: customizable to your needs!
 
 - We can define the output folder, file extensions, etc.
 - Example `ModuleInitializer` for global setup, defining the output folder:
-  ```csharp
-  using System.Runtime.CompilerServices;
 
-  public static class ModuleInitializer
+```cs
+using System.Runtime.CompilerServices;
+
+public static class ModuleInitializer
+{
+  [ModuleInitializer]
+  public static void Initialize() 
   {
-    [ModuleInitializer]
-    public static void Initialize() 
-    {
-      // To prevent cluttering the main folder, we will collect all verified snapshots in a dedicated folder.
-      // For details, see: https://github.com/VerifyTests/Verify/blob/main/docs/naming.md#derivepathinfo
-      DerivePathInfo(
-      (_, projectDirectory, type, method) => new(
-        directory: Path.Combine(projectDirectory, "VerifiedData"),
-        typeName: type.Name,
-        methodName: method.Name));
-    }
+    // To prevent cluttering the main folder, we will collect all verified snapshots in a dedicated folder.
+    // For details, see: https://github.com/VerifyTests/Verify/blob/main/docs/naming.md#derivepathinfo
+    DerivePathInfo(
+    (_, projectDirectory, type, method) => new(
+      directory: Path.Combine(projectDirectory, "VerifiedData"),
+      typeName: type.Name,
+      methodName: method.Name));
   }
-  ```
+}
+```
+
 ---
 layout: image-right
 image: /images/server.jpg
@@ -540,7 +543,7 @@ image: /images/server.jpg
 
 ## Verify - JSON/XML: Example
 
-```csharp
+```cs
 string InvalidJson = """{ "FirstName": "Homer" """;
 
 [Fact]
@@ -552,7 +555,7 @@ public Task Invalid_json_demo2() => VerifyJson(InvalidJson); // 👈 VerifyJson 
 
 Error message from second test:
 
-```csharp
+```cs
 Argon.JsonReaderException: Unexpected end of content while loading JObject
 ```
 
@@ -564,7 +567,7 @@ So, if you know that you are working with JSON/XML, use `VerifyJson`/`VerifyXml`
 
 ## Verify - Simplify Reading Test Data
 
-```csharp
+```cs
 [Fact]
 public Task Reading_from_file()
 {
@@ -582,7 +585,6 @@ private static string GetFileContent(string filename)
     return fileContent;
 }
 ```
-
 
 ---
 
@@ -602,19 +604,24 @@ private static string GetFileContent(string filename)
 
 Verify offers different strategies:
 
-  - Custom rounding
-    ```csharp
-    VerifierSettings.AddExtraSettings(x => x.FloatPrecision = 8);
-    ```
-  - Custom tests for each platform (if above fails)
-    ```csharp
-    // ...
-    settings.UniqueForOSPlatform()
-    // ...
-    ```
-    Drawback:
-    - works on Linux dev machine, CI pipeline, target platform
-    - fails on Windows dev machine, until windows dev commits ☹️
+- Custom rounding
+
+```cs
+VerifierSettings.AddExtraSettings(x => x.FloatPrecision = 8);
+```
+
+- Custom tests for each platform (if above fails)
+
+```cs
+// ...
+settings.UniqueForOSPlatform()
+// ...
+```
+
+  Drawback:
+
+- works on Linux dev machine, CI pipeline, target platform
+- fails on Windows dev machine, until windows dev commits ☹️
 
 ---
 layout: image-left
@@ -625,19 +632,16 @@ image: /images/fsharp512.png
 
 works out of the box 😎
 
-
 <img src="/images/party.gif"  width=450 />
-
 
 ---
 layout: image-right
 image: /images/verify-extensions.png
 ---
 
-
 ### Verify - Many Extensions
 
-https://github.com/VerifyTests/Verify?tab=readme-ov-file#extensions
+<https://github.com/VerifyTests/Verify?tab=readme-ov-file#extensions>
 
 - Images
 - PDFs
@@ -653,7 +657,7 @@ https://github.com/VerifyTests/Verify?tab=readme-ov-file#extensions
 
 Similar libraries exist for most programming languages.
 
-Overview: https://github.com/approvals
+Overview: <https://github.com/approvals>
 
 <div style="display: inline">
 <img src="/images/lang_cpp.svg" />
@@ -702,7 +706,7 @@ img {
 ## Verify - Maintainer
 
 - Simon Cropp
-- https://github.com/SimonCropp
+- <https://github.com/SimonCropp>
 - Simon reacts to issues and PRs very quickly
   <img src="/images/simom_cropp_avatar.jpg"  width=250 />
 
@@ -716,9 +720,6 @@ img {
 - Try to keep the "testing the seam" loop as short as possible
 - As always: tests should be automated (especially in CI)...
 - You might still have to deal with the final output format (encoding, floating point numbers, etc.)
-
-
-
 
 ---
 src: ./pages/99-end.md
