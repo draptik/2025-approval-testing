@@ -534,7 +534,7 @@ image: /images/server.jpg
 ## Verify - JSON/XML
 
 - JSON/XML are first-class citizens:
-  - Instead of verifiying a string, you can verify a JSON/XML object:
+  - Instead of verifying a string, you can verify a JSON/XML object:
   - `VerifyJson` instead of `Verify`
   - `VerifyXml` instead of `Verify`
   - These customized methods will fail fast if the input is not valid JSON/XML
