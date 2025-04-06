@@ -5,7 +5,7 @@
 - Interests:
   - Software Crafting
   - Test-Driven Development
-  - Funktional Programming
+  - Functional Programming
   - Domain-Driven Design
 - Slides are online: See QR-Code
 
