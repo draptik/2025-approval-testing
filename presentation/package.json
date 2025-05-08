@@ -8,17 +8,17 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^51.4.0",
+    "@slidev/cli": "^51.6.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@iconify-json/devicon": "^1.2.19",
+    "@iconify-json/devicon": "^1.2.23",
     "@iconify-json/logos": "^1.2.4",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/vscode-icons": "^1.2.16",
-    "playwright-chromium": "^1.51.1"
+    "@iconify-json/vscode-icons": "^1.2.20",
+    "playwright-chromium": "^1.52.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
