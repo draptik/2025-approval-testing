@@ -3,7 +3,7 @@ theme: ./mathema-2023
 defaults:
   layout: "default-with-footer"
 title: Approval-Testing
-occasion: "DNC 2025"
+occasion: "DDF 2025"
 occasionLogoUrl: "./images/logo-ddf.png"
 company: "MATHEMA GmbH"
 presenter: "Patrick Drechsler"
