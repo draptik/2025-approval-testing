@@ -4,7 +4,7 @@ defaults:
   layout: "default-with-footer"
 title: Approval-Testing
 occasion: "DNC 2025"
-occasionLogoUrl: "./images/logo-dnc-2025.png"
+occasionLogoUrl: "./images/logo-ddf.png"
 company: "MATHEMA GmbH"
 presenter: "Patrick Drechsler"
 contact: "patrick.drechsler@mathema.de"
