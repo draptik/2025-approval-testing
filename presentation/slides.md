@@ -3,8 +3,8 @@ theme: ./mathema-2023
 defaults:
   layout: "default-with-footer"
 title: Approval-Testing
-occasion: "DDF 2025"
-occasionLogoUrl: "./images/logo-ddf.png"
+occasion: "SoCraTes 2025"
+occasionLogoUrl: "./images/logo-socrates.png"
 company: "MATHEMA GmbH"
 presenter: "Patrick Drechsler"
 contact: "patrick.drechsler@mathema.de"
