@@ -1,0 +1,41 @@
+name: Deploy pages
+on:
+  push:
+    branches:
+      - 2025-07-socrates-de-approval-testing
+
+jobs:
+  deploy:
+
+    env:
+      PRESENTATION_FOLDER: 'presentation'
+      TARGET_REPO_NAME: '2025-07-socrates-de-approval-testing'
+      TARGET_GITHUB_OWNER: 'draptik'
+      NODE_VERSION: 'lts/*'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          cd ${{ env.PRESENTATION_FOLDER }}
+          npm ci
+
+      - name: Build
+        run: |
+          cd ${{ env.PRESENTATION_FOLDER }}
+          npm run build -- --base '/${{ env.TARGET_REPO_NAME }}/'
+
+      - name: Deploy to target repository
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          build_dir: ${{ env.PRESENTATION_FOLDER }}/dist
+          repo: '${{ env.TARGET_GITHUB_OWNER }}/${{ env.TARGET_REPO_NAME }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.SLIDEV_TOKEN }}
